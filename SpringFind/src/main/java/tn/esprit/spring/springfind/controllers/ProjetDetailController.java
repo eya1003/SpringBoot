@@ -21,13 +21,13 @@ public class ProjetDetailController {
 
     @Autowired
     private ProjetDetailImp serviceDetail;
-
+/*
     @PostMapping("/registerDetail")
     public ResponseEntity<?> Ajouter(@RequestBody ProjetDetail detail){
         serviceDetail.register(detail);
         return new ResponseEntity<>(serviceDetail.ajout(detail), HttpStatus.CREATED);
     }
-
+*/
     @GetMapping("/getalldetail")
     public ResponseEntity<?> getall(){
         serviceDetail.getall();
