@@ -19,8 +19,11 @@ public class Etudiant implements Serializable {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name="idEtudiant")
     private Long idEtudiant; // Clé primaire
+
     private String prenomE;
+
     private String nomE;
+
     @Enumerated(EnumType.STRING)
     private Option opt ;
 

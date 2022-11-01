@@ -16,7 +16,7 @@ public class EtudiantController {
     @PostMapping("/addEtudiant")
     @ResponseBody
     public void addEtudiant(@RequestBody Etudiant etudiant){
-        etudiantService.ajouter_etudiant(etudiant);
+       etudiantService.ajouter_etudiant(etudiant);
     }
 
 }
