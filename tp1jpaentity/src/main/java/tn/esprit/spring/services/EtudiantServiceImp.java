@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import tn.esprit.spring.entity.Etudiant;
 import tn.esprit.spring.repositories.EtudiantRepository;
 
+import java.util.Optional;
+
 @Service
 @Slf4j
 public class EtudiantServiceImp implements IEtudiantService{
@@ -19,4 +21,30 @@ public class EtudiantServiceImp implements IEtudiantService{
         log.info("Ajouter etudiant");
         return e.getIdEtudiant();
     }
+
+    @Override
+    public Etudiant updateEtudiant(Etudiant e) {
+
+        return etudiantRepository.save(e);
+    }
+
+    public Iterable<Etudiant> retrieveAllEtudiant() {
+
+        return etudiantRepository.findAll();
+    }
+
+    public void deleteEtudiant(long id) {
+        etudiantRepository.deleteById(id);
+    }
+
+ /*
+    @Override
+    public Iterable<Etudiant> retrieveEtudiant(long id) {
+        return etudiantRepository.findById(id);
+    }
+*/
+ @Override
+ public Optional< Etudiant > findEtudiantById(Long id) {
+     return etudiantRepository.findById(id);
+ }
 }

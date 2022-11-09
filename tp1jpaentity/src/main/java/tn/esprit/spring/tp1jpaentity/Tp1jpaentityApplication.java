@@ -13,6 +13,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class Tp1jpaentityApplication {
 
     public static void main(String[] args) {
+
         SpringApplication.run(Tp1jpaentityApplication.class, args);
     }
 
