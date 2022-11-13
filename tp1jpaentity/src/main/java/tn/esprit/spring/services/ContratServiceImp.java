@@ -52,6 +52,23 @@ public class ContratServiceImp implements  IContratService{
         etudiantRepository.save(etudiant);
     }
 */
+@Override
+public Contrat affectContratToEtudiant(Contrat ce, String nomE, String prenomE) {
+    Etudiant etudiant = etudiantRepository.findByNomEAndPrenomE(nomE, prenomE);
+    if (etudiant != null) {
+        int nombreContratActif = 0;
+        for (Contrat contrat : etudiant.getContrat()) {
+            if (contrat.getArchive() == true)
+                nombreContratActif++;
+        }
+        if (nombreContratActif < 5) {
+            ce.setEtudiant(etudiant);
+            ce.setArchive(true);
+            updateContrat(ce);
+        }
+    }
+    return ce;
+}
 
 
 }

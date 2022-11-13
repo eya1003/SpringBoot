@@ -9,6 +9,6 @@ import java.util.Optional;
 @Repository
 public interface EtudiantRepository extends JpaRepository<Etudiant, Long> {
 //long type de cle primaire
-
+Etudiant findByNomEAndPrenomE(String nomE,String prenomE);
 
 }

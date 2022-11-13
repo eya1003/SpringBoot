@@ -6,4 +6,5 @@ import tn.esprit.spring.entity.Equipe;
 
 @Repository
 public interface EquipeRepository extends JpaRepository<Equipe,Long> {
+
 }
