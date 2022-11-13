@@ -8,7 +8,10 @@ public interface IEtudiantService {
     Etudiant updateEtudiant(Etudiant e);
     public Iterable<Etudiant> retrieveAllEtudiant() ;
     public void deleteEtudiant(long id);
-   // public Iterable<Etudiant> retrieveEtudiant(long id) ;
+    // public Iterable<Etudiant> retrieveEtudiant(long id) ;
 
     Optional<Etudiant> findEtudiantById(Long id);
+    public void assignEdtudiantToDepartement( Long studiantId, Long departementId);
+    public  Etudiant addAndAssignEtudiantToEquipeandContrat(Etudiant e,
+                    Long idContrat, Long idEquipe);
 }

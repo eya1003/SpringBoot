@@ -57,4 +57,20 @@ public class EtudiantController {
     {
         return etudiantService.retrieveAllEtudiant();
     }
+
+    @PutMapping(value = "/affecter-etudiat-departement/{etudiantid}/{departementid}")
+    public void affecterEtudiantToDepartement(@PathVariable("etudiantid") Long etudiantId,
+                                              @PathVariable("departementid") Long departementId)
+    {
+        etudiantService.assignEdtudiantToDepartement(etudiantId,departementId);
+    }
+
+    @PutMapping(value = "/affecter-etudiant-contrat-equipe/{etudiantid}/{contratid}/{equuipeid}")
+    @ResponseBody
+    public  void affecterEtudiantToContratAndEquipe(Etudiant e,
+                                                    @PathVariable("contratid")Long contratid,
+                                                    @PathVariable("equuipeid")Long equipeid)
+    {
+        etudiantService.addAndAssignEtudiantToEquipeandContrat(e,contratid,equipeid);
+    }
 }

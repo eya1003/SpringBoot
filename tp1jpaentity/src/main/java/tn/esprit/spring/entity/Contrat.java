@@ -1,4 +1,5 @@
 package tn.esprit.spring.entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -25,6 +26,7 @@ public class Contrat implements Serializable{
     private Specialite specialite ;
 
     @ManyToOne
+            @JsonIgnore
     Etudiant etudiant;
 
     }

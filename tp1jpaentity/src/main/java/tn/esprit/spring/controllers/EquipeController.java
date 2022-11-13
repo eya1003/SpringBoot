@@ -30,7 +30,7 @@ public class EquipeController {
 
     @DeleteMapping("/daleteEquipe/{id}")
     @ResponseBody
-    public  void removeEquipe(@PathVariable("id") Integer eqId){
+    public  void removeEquipe(@PathVariable("id") Long eqId){
 
         equipeInterface.deleteEquipe(eqId);
     }

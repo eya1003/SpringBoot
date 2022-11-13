@@ -5,6 +5,7 @@ import javax.xml.crypto.Data;
 import java.io.Serializable;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 @Setter
 @Getter
@@ -19,6 +20,7 @@ public class Departement implements Serializable{
     private Long idDepart; // Clé primaire
     private String nomDepart;
 
+    @JsonIgnore
     @OneToMany( mappedBy="departement")
     private Set<Etudiant> etudiants;
 }

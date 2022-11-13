@@ -1,4 +1,5 @@
 package tn.esprit.spring.entity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -22,7 +23,7 @@ public class Equipe implements Serializable{
     @Enumerated(EnumType.STRING)
     private Niveau niveau ;
 
-    @ManyToMany(mappedBy="equipes")
+    @ManyToMany(mappedBy="equipes",cascade = CascadeType.ALL)
     private Set<Etudiant> etudiantEquipe;
 
     @OneToOne
