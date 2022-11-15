@@ -1,7 +1,11 @@
 package tn.esprit.spring.entity;
-import lombok.*;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
-import javax.xml.crypto.Data;
 import java.io.Serializable;
 import java.util.Set;
 
@@ -11,9 +15,9 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Table( name ="Unievrsite")
-public class Unievrsite  implements Serializable{
+public class Universite  implements Serializable {
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="idUniv")
     private Long idUniv; // Clé primaire
 

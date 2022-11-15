@@ -12,6 +12,5 @@ public interface IEtudiantService {
 
     Optional<Etudiant> findEtudiantById(Long id);
     public void assignEdtudiantToDepartement( Long studiantId, Long departementId);
-    public  Etudiant addAndAssignEtudiantToEquipeandContrat(Etudiant e,
-                    Long idContrat, Long idEquipe);
+    public Etudiant AddAssignEtudiantToEquipeAndContrat ( Etudiant e , Long idContrat , Long idEtudiant);
 }

@@ -74,16 +74,17 @@ public class EtudiantServiceImp implements IEtudiantService{
 
 
 
-     @Transactional
-     public  Etudiant addAndAssignEtudiantToEquipeandContrat(Etudiant e,
-                Long idContrat, Long idEquipe)
-    {
-     Contrat c= contratRepository.findById(idContrat).orElse(null);
-     Equipe eq= equipeRepository.findById(idEquipe).orElse(null);
-        c.setEtudiant(e);
-      eq.getEtudiantEquipe().add(e);
-      return e;
+    @Transactional
+    public Etudiant AddAssignEtudiantToEquipeAndContrat( Etudiant e , Long idContrat , Long idequipe){
+
+        Contrat contrat = contratRepository.findById(idContrat).orElse(null);
+        Equipe equipe = equipeRepository.findById(idequipe).orElse(null);
+        contrat.setEtudiant(e);
+        equipe.getEtudiantEquipe().add(e);
+        return etudiantRepository.save(e);
+
     }
+
 
     @Scheduled(fixedRate = 60000)
     public void fixedRateMethod(){

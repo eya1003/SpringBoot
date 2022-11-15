@@ -65,12 +65,11 @@ public class EtudiantController {
         etudiantService.assignEdtudiantToDepartement(etudiantId,departementId);
     }
 
-    @PutMapping(value = "/affecter-etudiant-contrat-equipe/{etudiantid}/{contratid}/{equuipeid}")
+    @PostMapping (value = "/affectationEtudiant_contrat_equipe/{contrat-id}/{equipe-id}")
     @ResponseBody
-    public  void affecterEtudiantToContratAndEquipe(Etudiant e,
-                                                    @PathVariable("contratid")Long contratid,
-                                                    @PathVariable("equuipeid")Long equipeid)
+    public Etudiant affectationEtudiantContratEquipe( @RequestBody Etudiant etudiant ,@PathVariable("contrat-id") Long contratId ,@PathVariable("equipe-id") Long equipeId )
     {
-        etudiantService.addAndAssignEtudiantToEquipeandContrat(e,contratid,equipeid);
+        Etudiant etudiant1 = etudiantService.AddAssignEtudiantToEquipeAndContrat(etudiant,contratId,equipeId );
+        return etudiant1;
     }
 }

@@ -40,7 +40,8 @@ public class Etudiant implements Serializable {
     @ManyToOne
     Departement departement;
 
-    @ManyToMany()
+
+    @ManyToMany(mappedBy = "etudiantEquipe")
     private Set<Equipe> equipes;
 }
 
