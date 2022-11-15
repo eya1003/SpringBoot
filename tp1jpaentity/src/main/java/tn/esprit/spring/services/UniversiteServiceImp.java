@@ -14,9 +14,8 @@ import java.util.Optional;
 @Slf4j
 public class UniversiteServiceImp implements IUniversiteService{
 
-    @Autowired
-    UniversiteRepository universiteRepository ;
-    @Autowired
+
+    UniversiteRepository universiteRepository;
     DepartementRepository departementRepository;
 
     @Override
@@ -46,11 +45,14 @@ public class UniversiteServiceImp implements IUniversiteService{
         return universiteRepository.findById(id);
     }
 
-    public void assignUniversiteToDepartement(Long idUniversite, Long
-            idDepartement){
-        Universite universite =universiteRepository.findById(idUniversite).orElse(null);
-        Departement departement = departementRepository.findById(idDepartement).orElse(null);
-        universite.getDepart().add(departement);
-        universiteRepository.save(universite);
+
+    public void assignUniversiteToDepartement(Long idU, Long idD){
+
+            Universite universite = universiteRepository.findById(idU).orElse(null);
+            Departement departement= departementRepository.findById(idD).orElse(null);
+
+            universite.getDepartements().add(departement);
+            universiteRepository.save(universite);
+        }
     }
-}
+

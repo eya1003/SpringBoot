@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import tn.esprit.spring.entity.Universite;
+import tn.esprit.spring.repositories.DepartementRepository;
 import tn.esprit.spring.services.IUniversiteService;
 
 import java.util.Optional;
@@ -49,12 +50,17 @@ public class UniversiteController {
         return iUniversiteService.findUniversiteById(Id);
     }
 
-    @PutMapping(value = "/affecter-universite-departement/{univerid}/{departementid}")
-    public void affecteruniversiteToDepartement(@PathVariable("univerid") Long univerid,
+    @PutMapping( value ="/affectationUni_dep/{Uni-id}/{dep-id}")
+    public void affectationUniversiteDepartement(@PathVariable("Uni-id") Long UniId ,@PathVariable("dep-id") Long depId )
+    {
+        iUniversiteService.assignUniversiteToDepartement(UniId,depId);
+    }
+    @PutMapping(value = "/affecter-univ-departement/{univid}/{departementid}")
+    public void affecterunivToDepartement(@PathVariable("univid") Long univ,
                                               @PathVariable("departementid") Long departementId)
     {
-
-        iUniversiteService.assignUniversiteToDepartement(univerid,departementId);
+        iUniversiteService.assignUniversiteToDepartement(univ,departementId);
     }
+
 
 }
