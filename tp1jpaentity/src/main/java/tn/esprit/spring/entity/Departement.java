@@ -23,4 +23,9 @@ public class Departement implements Serializable{
     @JsonIgnore
     @OneToMany( mappedBy="departement")
     private Set<Etudiant> etudiants;
+
+    @OneToMany( mappedBy="departementsProf")
+    private Set<Professeur> professeurs;
+
+
 }
