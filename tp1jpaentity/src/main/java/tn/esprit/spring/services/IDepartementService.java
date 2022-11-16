@@ -16,5 +16,5 @@ public interface IDepartementService {
     public void deleteDepartement(long id);
     Departement updateDepartement(Departement d);
     public Departement retrieveDepartement(Long idDep);
-    public Set<Etudiant> getEtudiantsByDepar (Long idDepartement);
+    public List<Etudiant> getEtudiantsByDepar (Long idDepartement);
 }

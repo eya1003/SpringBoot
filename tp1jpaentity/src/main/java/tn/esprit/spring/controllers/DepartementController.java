@@ -11,7 +11,6 @@ import tn.esprit.spring.services.IDepartementService;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @RestController
 @RequestMapping("/DepartementC")
@@ -53,8 +52,8 @@ public class DepartementController {
     }
 
  */
-    @GetMapping("/getEtudiantsByDepartement/{departement-id}")
-    public Set<Etudiant> getEtudiantsByDepartement(@PathVariable("departement-id")  Long idDepartement) {
+    @GetMapping("/getEtudiantsByDepartement")
+    public List<Etudiant> getEtudiantsByDepartement(@RequestParam Long idDepartement) {
         return iDepartementService.getEtudiantsByDepar(idDepartement);
     }
 }

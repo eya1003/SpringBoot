@@ -10,6 +10,7 @@ import tn.esprit.spring.entity.Etudiant;
 import tn.esprit.spring.repositories.ContratRepository;
 import tn.esprit.spring.repositories.EtudiantRepository;
 
+import java.util.Date;
 import java.util.Optional;
 
 @Service
@@ -70,5 +71,15 @@ public Contrat affectContratToEtudiant(Contrat ce, String nomE, String prenomE) 
     return ce;
 }
 
+    public Integer nbContratsValides(Date startDate, Date endDate) {
+        return contratRepository.countByDateFinContratIsBetweenanAndAndArchiveIsNot(startDate,  endDate, true);
+    }
+/*
+    public float getChiffreAffaireEntreDeuxDate(Date startDate, Date endDate){
+        float s=0;
+        int a = endDate.getMonth() - startDate.getMonth();
+        for( Contrat c : )
+    }
+    */
 
 }

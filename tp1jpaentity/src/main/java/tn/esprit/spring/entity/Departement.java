@@ -20,12 +20,15 @@ public class Departement implements Serializable{
     @Column(name="idDepart")
     private Long idDepart; // Clé primaire
     private String nomDepart;
-
+/*
     @JsonIgnore
     @OneToMany( )
     private Set<Etudiant> etudiants;
 
-
+    */
+    @OneToMany(mappedBy = "departement")
+    @JsonIgnore
+    List<Etudiant> etudiantList;
 
     @OneToMany( mappedBy="departementsProf")
     private Set<Professeur> professeurs;

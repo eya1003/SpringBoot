@@ -44,8 +44,8 @@ public class DepartementServiceImp implements IDepartementService{
         return departementRepository.findById(idDep).get();
     }
 
-    public Set<Etudiant> getEtudiantsByDepar (Long idDepartement){
-        return  retrieveDepartement(idDepartement).getEtudiants();
+    public List<Etudiant> getEtudiantsByDepar (Long idDepartement){
+        return  retrieveDepartement(idDepartement).getEtudiantList();
     }
 
 }
