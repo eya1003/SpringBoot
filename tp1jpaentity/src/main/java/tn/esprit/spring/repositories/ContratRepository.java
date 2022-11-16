@@ -8,5 +8,4 @@ import java.util.Date;
 
 @Repository
 public interface ContratRepository extends JpaRepository<Contrat,Long> {
-    Integer countByDateFinContratIsBetweenanAndAndArchiveIsNot(Date startDate, Date endDate, Boolean status);
 }

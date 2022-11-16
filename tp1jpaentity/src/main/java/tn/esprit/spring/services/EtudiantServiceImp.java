@@ -18,19 +18,19 @@ import tn.esprit.spring.repositories.EtudiantRepository;
 
 import javax.transaction.Transactional;
 import java.util.Optional;
-@AllArgsConstructor
+
 @Service
-@EnableScheduling
 @Slf4j
+@EnableScheduling
 public class EtudiantServiceImp implements IEtudiantService{
 
-    @Autowired
+
     EtudiantRepository etudiantRepository ;
-    @Autowired
+
     DepartementRepository departementRepository;
-    @Autowired
+
     ContratRepository contratRepository;
-    @Autowired
+
     EquipeRepository equipeRepository;
     @Override
     public Long ajouter_etudiant(Etudiant e) {
@@ -51,15 +51,11 @@ public class EtudiantServiceImp implements IEtudiantService{
     }
 
     public void deleteEtudiant(long id) {
+
         etudiantRepository.deleteById(id);
     }
 
- /*
-    @Override
-    public Iterable<Etudiant> retrieveEtudiant(long id) {
-        return etudiantRepository.findById(id);
-    }
-*/
+
  @Override
  public Optional< Etudiant > findEtudiantById(Long id) {
      return etudiantRepository.findById(id);

@@ -1,6 +1,7 @@
 package tn.esprit.spring.services;
 
 
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,7 +54,7 @@ public class ContratServiceImp implements  IContratService{
         etudiantRepository.save(etudiant);
     }
 */
-@Override
+/*
 public Contrat affectContratToEtudiant(Contrat ce, String nomE, String prenomE) {
     Etudiant etudiant = etudiantRepository.findByNomEAndPrenomE(nomE, prenomE);
     if (etudiant != null) {
@@ -74,12 +75,6 @@ public Contrat affectContratToEtudiant(Contrat ce, String nomE, String prenomE) 
     public Integer nbContratsValides(Date startDate, Date endDate) {
         return contratRepository.countByDateFinContratIsBetweenanAndAndArchiveIsNot(startDate,  endDate, true);
     }
-/*
-    public float getChiffreAffaireEntreDeuxDate(Date startDate, Date endDate){
-        float s=0;
-        int a = endDate.getMonth() - startDate.getMonth();
-        for( Contrat c : )
-    }
-    */
+*/
 
 }

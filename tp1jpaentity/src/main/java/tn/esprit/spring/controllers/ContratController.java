@@ -11,7 +11,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/ContratC")
 public class ContratController {
-    @Autowired
+/*    @Autowired
     IContratService iContratService;
 
     @PostMapping("/addContrat")
@@ -47,11 +47,9 @@ public class ContratController {
         return iContratService.findContratById(Id);
     }
 
-    /*
-    @PutMapping(value = "/affectContratToEtudiant/{id-contrat}/{id-etudiant}")
-    public assignContratToEtudiant()
+ */
 
-     */
+
 
 
 }

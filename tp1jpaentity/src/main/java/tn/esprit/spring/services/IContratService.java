@@ -11,5 +11,5 @@ public interface IContratService {
     public void deleteContrat(long id);
     Contrat updateContrat(Contrat c);
     Optional<Contrat> findContratById(Long id);
-    public Contrat affectContratToEtudiant(Contrat ce, String nomE, String prenomE);
+    //public Contrat affectContratToEtudiant(Contrat ce, String nomE, String prenomE);
 }
