@@ -3,7 +3,9 @@ package tn.esprit.spring.services;
 import tn.esprit.spring.entity.Departement;
 import tn.esprit.spring.entity.Etudiant;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 public interface IDepartementService {
 
@@ -13,4 +15,6 @@ public interface IDepartementService {
 
     public void deleteDepartement(long id);
     Departement updateDepartement(Departement d);
+    public Departement retrieveDepartement(Long idDep);
+    public Set<Etudiant> getEtudiantsByDepar (Long idDepartement);
 }

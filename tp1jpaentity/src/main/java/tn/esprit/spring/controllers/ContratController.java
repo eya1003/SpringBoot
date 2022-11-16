@@ -46,4 +46,10 @@ public class ContratController {
     public Optional< Contrat > GetContratbyId(@PathVariable("id") Long Id){
         return iContratService.findContratById(Id);
     }
+
+    /*
+    @PutMapping(value = "/affectContratToEtudiant/{id-contrat}/{id-etudiant}")
+    public assignContratToEtudiant()
+
+     */
 }

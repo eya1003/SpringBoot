@@ -3,6 +3,7 @@ package tn.esprit.spring.entity;
 import javax.persistence.*;
 import javax.xml.crypto.Data;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -23,6 +24,8 @@ public class Departement implements Serializable{
     @JsonIgnore
     @OneToMany( )
     private Set<Etudiant> etudiants;
+
+
 
     @OneToMany( mappedBy="departementsProf")
     private Set<Professeur> professeurs;

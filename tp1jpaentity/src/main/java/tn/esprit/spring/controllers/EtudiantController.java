@@ -65,6 +65,7 @@ public class EtudiantController {
         etudiantService.assignEdtudiantToDepartement(etudiantId,departementId);
     }
 
+
     @PostMapping (value = "/affectationEtudiant_contrat_equipe/{contrat-id}/{equipe-id}")
     @ResponseBody
     public Etudiant affectationEtudiantContratEquipe( @RequestBody Etudiant etudiant ,@PathVariable("contrat-id") Long contratId ,@PathVariable("equipe-id") Long equipeId )

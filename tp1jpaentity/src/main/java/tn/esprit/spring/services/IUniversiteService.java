@@ -1,16 +1,15 @@
 package tn.esprit.spring.services;
 
+import tn.esprit.spring.entity.Departement;
 import tn.esprit.spring.entity.Universite;
 
-import java.util.Optional;
+import java.util.List;
+import java.util.Set;
 
 public interface IUniversiteService {
-    public Long ajouter_Universite(Universite e);
-    Universite updateUniversite(Universite e);
-    public Iterable<Universite> retrieveAllUniversite() ;
-    public void deleteUniversite(long id);
-
-    Optional<Universite> findUniversiteById(Long id);
+    public Iterable<Universite> retrieveAllUniversite();
     public void assignUniversiteToDepartement(Long idUniversite, Long
             idDepartement);
+    public Set<Departement> retrieveDepartementsByUniversite(Long idUniversite);
+    public Universite retrieveUniversite(Long idUniver);
 }

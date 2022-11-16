@@ -5,10 +5,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.spring.entity.Departement;
 
+import tn.esprit.spring.entity.Etudiant;
 import tn.esprit.spring.services.IDepartementService;
 
 
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/DepartementC")
@@ -39,7 +42,19 @@ public class DepartementController {
 
     @DeleteMapping("/deleteDepartement/{departement-id}")
     @ResponseBody
-    public void deleteEtudiant(@PathVariable("departement-id") Integer departementId ) {
+    public void deleteEtudiant(@PathVariable("departement-id") Long departementId ) {
         iDepartementService.deleteDepartement(departementId);
+    }
+/*
+    @GetMapping("/getEtudiantsByDepartement/{id-depart}")
+    @ResponseBody
+    public void getEtudiantsByDepartement(@PathVariable("id-depart")Long departementId ) {
+        iDepartementService.getEtudiantsByDepar(departementId);
+    }
+
+ */
+    @GetMapping("/getEtudiantsByDepartement/{departement-id}")
+    public Set<Etudiant> getEtudiantsByDepartement(@PathVariable("departement-id")  Long idDepartement) {
+        return iDepartementService.getEtudiantsByDepar(idDepartement);
     }
 }

@@ -1,5 +1,6 @@
 package tn.esprit.spring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,5 +25,5 @@ public class Universite  implements Serializable {
     private String nomUniv;
 
     @OneToMany()
-    private Set<Departement> depart;
+    private Set<Departement> departements;
 }
