@@ -68,7 +68,9 @@ public class EtudiantController {
 
     @PostMapping (value = "/affectationEtudiant_contrat_equipe/{contrat-id}/{equipe-id}")
     @ResponseBody
-    public Etudiant affectationEtudiantContratEquipe( @RequestBody Etudiant etudiant ,@PathVariable("contrat-id") Long contratId ,@PathVariable("equipe-id") Long equipeId )
+    public Etudiant affectationEtudiantContratEquipe( @RequestBody Etudiant etudiant ,
+                                                      @PathVariable("contrat-id") Long contratId ,
+                                                      @PathVariable("equipe-id") Long equipeId )
     {
         Etudiant etudiant1 = etudiantService.AddAssignEtudiantToEquipeAndContrat(etudiant,contratId,equipeId );
         return etudiant1;

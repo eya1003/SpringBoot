@@ -7,6 +7,8 @@ import tn.esprit.spring.entity.Etudiant;
 import tn.esprit.spring.entity.Professeur;
 import tn.esprit.spring.services.IProfesseurService;
 
+import java.util.Optional;
+
 @RestController
 @RequestMapping("/ProfesseurC")
 public class ProfesseurController {
@@ -37,4 +39,28 @@ public class ProfesseurController {
     public  void removeProfesseur(@PathVariable("Professeur-id") Integer ProfesseurId){
         iProfesseurService.deleteProfesseur(ProfesseurId);
     }
+
+    @GetMapping("/findProfesseurById/{professeur-id}")
+    @ResponseBody
+    public Optional< Professeur > GetprofesseurbyId(@PathVariable("professeur-id") Long Id){
+        return iProfesseurService.findProfesseurById(Id);
+    }
+
+    @GetMapping("/CalculSalaire/{prixHeure}/{id-prof}")
+    @ResponseBody
+    public float CalculSalaire(@PathVariable("prixHeure") float prixHeure,
+                               @PathVariable("id-prof")long idProf)
+    {
+
+       return iProfesseurService.calculSalaire(prixHeure,idProf);
+    }
+
+    @GetMapping("/findNbHeurebyId/{professeur-id}")
+    @ResponseBody
+    public int GetnbHeurebyId(@PathVariable("professeur-id") Long Id){
+        return iProfesseurService.getnbHeureById(Id);
+    }
+
+
+
 }

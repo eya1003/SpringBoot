@@ -29,6 +29,7 @@ public class Professeur implements Serializable {
     private Date anneeAmb;
     private  Integer nbrheure;
 
+
     @Enumerated(EnumType.STRING)
     private Classe classe ;
 
