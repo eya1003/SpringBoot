@@ -11,6 +11,7 @@ import tn.esprit.spring.repositories.ProfesseurRepository;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -95,7 +96,12 @@ public class ProfesseurServiceImp implements IProfesseurService{
         // Send Message!
         this.javaMailSender.send(message);
 
+    }
 
-
+    public List<Professeur> search(String rech) {
+        if (rech != null) {
+            return professeurRepository.search(rech);
+        }
+        return professeurRepository.findAll();
     }
 }

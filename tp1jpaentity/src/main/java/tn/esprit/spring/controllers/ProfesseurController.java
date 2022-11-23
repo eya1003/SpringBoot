@@ -7,6 +7,7 @@ import tn.esprit.spring.entity.Etudiant;
 import tn.esprit.spring.entity.Professeur;
 import tn.esprit.spring.services.IProfesseurService;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -63,4 +64,9 @@ public class ProfesseurController {
 
 
 
+    @GetMapping("/search")
+    public List<Professeur> viewHomePage(String keyword) {
+        List<Professeur> professeurs= iProfesseurService.search(keyword);
+        return professeurs;
+    }
 }
