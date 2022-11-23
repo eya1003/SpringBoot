@@ -24,13 +24,13 @@ import java.util.Optional;
 @EnableScheduling
 public class EtudiantServiceImp implements IEtudiantService{
 
-
+    @Autowired
     EtudiantRepository etudiantRepository ;
-
+    @Autowired
     DepartementRepository departementRepository;
-
+    @Autowired
     ContratRepository contratRepository;
-
+    @Autowired
     EquipeRepository equipeRepository;
     @Override
     public Long ajouter_etudiant(Etudiant e) {
@@ -70,6 +70,8 @@ public class EtudiantServiceImp implements IEtudiantService{
 
 
 
+
+
     @Transactional
     public Etudiant AddAssignEtudiantToEquipeAndContrat( Etudiant e , Long idContrat , Long idequipe){
 
@@ -86,6 +88,8 @@ public class EtudiantServiceImp implements IEtudiantService{
     public void fixedRateMethod(){
         System.out.println("Method with fixed Rate");
     }
+
+
 
 
 }

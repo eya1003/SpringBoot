@@ -5,6 +5,7 @@ import java.util.Optional;
 
 public interface IEtudiantService {
     public Long ajouter_etudiant(Etudiant e);
+
     Etudiant updateEtudiant(Etudiant e);
     public Iterable<Etudiant> retrieveAllEtudiant() ;
     public void deleteEtudiant(long id);
@@ -13,4 +14,7 @@ public interface IEtudiantService {
     Optional<Etudiant> findEtudiantById(Long id);
     public void assignEdtudiantToDepartement( Long studiantId, Long departementId);
     public Etudiant AddAssignEtudiantToEquipeAndContrat ( Etudiant e , Long idContrat , Long idEtudiant);
+
+
+
 }

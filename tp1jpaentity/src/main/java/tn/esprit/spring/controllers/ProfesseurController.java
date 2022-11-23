@@ -25,6 +25,7 @@ public class ProfesseurController {
     @ResponseBody
     public  Iterable<Professeur> getAllProfesseur()
     {
+
         return iProfesseurService.getAllProfesseurs();
     }
 
@@ -68,5 +69,12 @@ public class ProfesseurController {
     public List<Professeur> viewHomePage(String keyword) {
         List<Professeur> professeurs= iProfesseurService.search(keyword);
         return professeurs;
+    }
+
+    @PutMapping(value = "/affecter-professeur-departement/{profid}/{departementid}")
+    public void affecterprofesseurToDepartement(@PathVariable("profid") Long profid,
+                                              @PathVariable("departementid") Long departementId)
+    {
+        iProfesseurService.assignProfesseurToDepartement(profid,departementId);
     }
 }

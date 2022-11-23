@@ -30,7 +30,8 @@ public class Departement implements Serializable{
     @JsonIgnore
     List<Etudiant> etudiantList;
 
-    @OneToMany( mappedBy="departementsProf")
+    @OneToMany( mappedBy="departementsProf",cascade = CascadeType.ALL)
+    @JsonIgnore
     private Set<Professeur> professeurs;
 
 

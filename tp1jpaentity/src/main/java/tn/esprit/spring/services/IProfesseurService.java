@@ -21,4 +21,6 @@ public interface IProfesseurService {
   //  public float CalculSalaireWithDate(float prixHeure, Long id);
 
     public List<Professeur> search(String rech);
+
+    public void assignProfesseurToDepartement( Long ProfID, Long departeId);
 }

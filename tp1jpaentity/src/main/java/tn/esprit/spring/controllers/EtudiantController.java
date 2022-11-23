@@ -44,6 +44,7 @@ public class EtudiantController {
     }
 
 */
+
     @GetMapping("/findbyId/{etudiant-id}")
     @ResponseBody
     public Optional< Etudiant > GetEtudiantbyId(@PathVariable("etudiant-id") Long Id){
@@ -75,4 +76,6 @@ public class EtudiantController {
         Etudiant etudiant1 = etudiantService.AddAssignEtudiantToEquipeAndContrat(etudiant,contratId,equipeId );
         return etudiant1;
     }
+
+
 }

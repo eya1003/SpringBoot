@@ -41,7 +41,13 @@ public class Etudiant implements Serializable {
     Departement departement;
 
 
-    @ManyToMany(mappedBy = "etudiantEquipe")
+    @ManyToMany(mappedBy = "etudiantEquipe",cascade = CascadeType.ALL)
     private Set<Equipe> equipes;
+
+
+
+
+
+
 }
 

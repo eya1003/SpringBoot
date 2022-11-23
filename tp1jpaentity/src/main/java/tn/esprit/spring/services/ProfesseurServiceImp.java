@@ -5,7 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
+import tn.esprit.spring.entity.Departement;
+import tn.esprit.spring.entity.Etudiant;
 import tn.esprit.spring.entity.Professeur;
+import tn.esprit.spring.repositories.DepartementRepository;
 import tn.esprit.spring.repositories.ProfesseurRepository;
 
 import java.time.LocalDate;
@@ -21,13 +24,15 @@ public class ProfesseurServiceImp implements IProfesseurService{
   @Autowired
     ProfesseurRepository professeurRepository;
   @Autowired
+    DepartementRepository departementRepository;
+  @Autowired
   private JavaMailSender javaMailSender;
 
     @Override
     public Long ajouter_professeur(Professeur p) {
         professeurRepository.save(p);
         log.info("Ajouter Professeur");
-        sendSimpleEmail(p.getEmailProf());
+       sendSimpleEmail(p.getEmailProf());
       return p.getIdProfesseur();
     }
 
@@ -60,6 +65,7 @@ public class ProfesseurServiceImp implements IProfesseurService{
     }
 
     public int getnbHeureById(Long id) {
+
         return professeurRepository.findById(id).get().getNbrheure();
     }
 /*
@@ -104,4 +110,14 @@ public class ProfesseurServiceImp implements IProfesseurService{
         }
         return professeurRepository.findAll();
     }
+
+    @Override
+    public void assignProfesseurToDepartement(Long ProfID, Long departeId) {
+
+        Professeur professeur =professeurRepository.findById(ProfID).orElse(null);
+        Departement departement = departementRepository.findById(departeId).orElse(null);
+        professeur.setDepartementsProf(departement);
+        professeurRepository.save(professeur);
+    }
+
 }
