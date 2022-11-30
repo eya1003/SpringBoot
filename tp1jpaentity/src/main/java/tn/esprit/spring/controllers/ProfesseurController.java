@@ -2,6 +2,7 @@ package tn.esprit.spring.controllers;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.spring.entity.Etudiant;
 import tn.esprit.spring.entity.Professeur;
@@ -11,17 +12,21 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@SpringBootApplication
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/ProfesseurC")
 public class ProfesseurController {
     @Autowired
     IProfesseurService iProfesseurService;
 
     @PostMapping("/addProfesseur")
+    @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody
     public void addProfesseur(@RequestBody Professeur professeur){
         iProfesseurService.ajouter_professeur(professeur);
     }
     @GetMapping("/getAllProfesseur")
+    @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody
     public  Iterable<Professeur> getAllProfesseur()
     {
@@ -30,6 +35,7 @@ public class ProfesseurController {
     }
 
     @PutMapping("/updateProfesseur")
+    @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody
     public Professeur updateProfesseur(@RequestBody Professeur e){
         Professeur professeur= iProfesseurService.updateProfesseur(e);
@@ -37,18 +43,21 @@ public class ProfesseurController {
     }
 
     @DeleteMapping("/deleteProfesseur/{Professeur-id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody
     public  void removeProfesseur(@PathVariable("Professeur-id") Integer ProfesseurId){
         iProfesseurService.deleteProfesseur(ProfesseurId);
     }
 
     @GetMapping("/findProfesseurById/{professeur-id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody
     public Optional< Professeur > GetprofesseurbyId(@PathVariable("professeur-id") Long Id){
         return iProfesseurService.findProfesseurById(Id);
     }
 
     @GetMapping("/CalculSalaire/{prixHeure}/{id-prof}")
+    @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody
     public float CalculSalaire(@PathVariable("prixHeure") float prixHeure,
                                @PathVariable("id-prof")long idProf)
@@ -58,6 +67,7 @@ public class ProfesseurController {
     }
 
     @GetMapping("/findNbHeurebyId/{professeur-id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody
     public int GetnbHeurebyId(@PathVariable("professeur-id") Long Id){
         return iProfesseurService.getnbHeureById(Id);
@@ -66,11 +76,12 @@ public class ProfesseurController {
 
 
     @GetMapping("/search")
+    @CrossOrigin(origins = "http://localhost:4200")
     public List<Professeur> viewHomePage(String keyword) {
         List<Professeur> professeurs= iProfesseurService.search(keyword);
         return professeurs;
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping(value = "/affecter-professeur-departement/{profid}/{departementid}")
     public void affecterprofesseurToDepartement(@PathVariable("profid") Long profid,
                                               @PathVariable("departementid") Long departementId)

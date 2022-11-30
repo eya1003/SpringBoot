@@ -32,7 +32,7 @@ public class Departement implements Serializable{
 
     @OneToMany( mappedBy="departementsProf",cascade = CascadeType.ALL)
     @JsonIgnore
-    private Set<Professeur> professeurs;
+    private Set<Professeur>     professeurs;
 
 
 }

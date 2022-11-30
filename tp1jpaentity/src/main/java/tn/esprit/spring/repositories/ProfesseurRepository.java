@@ -11,6 +11,7 @@ public interface ProfesseurRepository extends JpaRepository<Professeur,Long> {
             + " OR p.prenomProf LIKE %?1%"
             + " OR p.emailProf LIKE %?1%"
             + " OR p.module LIKE %?1%"
+            + " OR p.anneeAmb  LIKE %?1%"
             + " OR CONCAT(p.numTelProf, '') LIKE %?1%"
             + " OR CONCAT(p.nbrheure, '') LIKE %?1%"
           //  + " OR p.anneeAmb LIKE %:keyword%"

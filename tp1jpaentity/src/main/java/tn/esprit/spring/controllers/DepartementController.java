@@ -13,13 +13,15 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/DepartementC")
 public class DepartementController {
 
     @Autowired
     IDepartementService iDepartementService;
 
-    @GetMapping("/")
+    @GetMapping("/getAll")
+    @CrossOrigin(origins = "http://localhost:4200")
     public Iterable<Departement>  GetAllDepartement(){
         return iDepartementService.retrieveAllDepartement();
     }
@@ -28,20 +30,23 @@ public class DepartementController {
         return iDepartementService.findDepartementById(Id);
     }
     @PostMapping("/addDepartement")
+    @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody
     public void addDepartement(@RequestBody Departement departement) {
         iDepartementService.ajouterDepartement(departement);
     }
 
     @PutMapping("/updateDepartement")
+    @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody
     public void updateDepartement(@RequestBody Departement departement) {
         iDepartementService.updateDepartement(departement);
     }
 
     @DeleteMapping("/deleteDepartement/{departement-id}")
+    @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody
-    public void deleteEtudiant(@PathVariable("departement-id") Long departementId ) {
+    public void deleteDepartement(@PathVariable("departement-id") Long departementId ) {
         iDepartementService.deleteDepartement(departementId);
     }
 /*
