@@ -11,7 +11,7 @@ public interface IDepartementService {
 
     public Long ajouterDepartement(Departement d);
     public Iterable<Departement> retrieveAllDepartement();
-    Optional< Departement > findDepartementById(Long id);
+    Departement  findDepartementById(Long id);
 
     public void deleteDepartement(long id);
     Departement updateDepartement(Departement d);

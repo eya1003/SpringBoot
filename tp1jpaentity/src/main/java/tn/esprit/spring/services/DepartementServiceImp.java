@@ -29,8 +29,9 @@ public class DepartementServiceImp implements IDepartementService{
     public Iterable<Departement> retrieveAllDepartement() {return departementRepository.findAll();}
 
     @Override
-    public Optional< Departement > findDepartementById(Long id) {
-        return departementRepository.findById(id);
+    public  Departement findDepartementById(Long id) {
+
+        return departementRepository.findById(id).get();
     }
 
     @Override

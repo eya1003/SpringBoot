@@ -26,7 +26,8 @@ public class DepartementController {
         return iDepartementService.retrieveAllDepartement();
     }
     @GetMapping("/DepartementById/{departement-id}")
-    public Optional< Departement > GetDepartementbyId(@PathVariable("departement-id") Long Id){
+    @CrossOrigin(origins = "http://localhost:4200")
+    public  Departement  GetDepartementbyId(@PathVariable("departement-id") Long Id){
         return iDepartementService.findDepartementById(Id);
     }
     @PostMapping("/addDepartement")
