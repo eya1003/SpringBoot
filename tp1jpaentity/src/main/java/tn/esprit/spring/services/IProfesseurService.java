@@ -23,4 +23,6 @@ public interface IProfesseurService {
     public List<Professeur> search(String rech);
 
     public void assignProfesseurToDepartement( Long ProfID, Long departeId);
+    public Professeur addProfesseurandAffectDepartement( Professeur p, Long departeId);
+
 }

@@ -19,21 +19,21 @@ import java.util.Optional;
 
 @Service
 @Slf4j
-public class ProfesseurServiceImp implements IProfesseurService{
+public class ProfesseurServiceImp implements IProfesseurService {
 
-  @Autowired
+    @Autowired
     ProfesseurRepository professeurRepository;
-  @Autowired
+    @Autowired
     DepartementRepository departementRepository;
-  @Autowired
-  private JavaMailSender javaMailSender;
+    @Autowired
+    private JavaMailSender javaMailSender;
 
     @Override
     public Long ajouter_professeur(Professeur p) {
         professeurRepository.save(p);
         log.info("Ajouter Professeur");
-       sendSimpleEmail(p.getEmailProf());
-      return p.getIdProfesseur();
+        sendSimpleEmail(p.getEmailProf());
+        return p.getIdProfesseur();
     }
 
     @Override
@@ -48,10 +48,8 @@ public class ProfesseurServiceImp implements IProfesseurService{
 
     @Override
     public void deleteProfesseur(long id) {
-         professeurRepository.deleteById(id);
+        professeurRepository.deleteById(id);
     }
-
-
 
 
     public Optional<Professeur> findProfesseurById(Long id) {
@@ -60,8 +58,8 @@ public class ProfesseurServiceImp implements IProfesseurService{
 
     @Override
     public float calculSalaire(float prixHeure, Long id) {
-        float s =0;
-        return  s= prixHeure*getnbHeureById(id);
+        float s = 0;
+        return s = prixHeure * getnbHeureById(id);
     }
 
     public int getnbHeureById(Long id) {
@@ -104,20 +102,28 @@ public class ProfesseurServiceImp implements IProfesseurService{
 
     }
 
-    public List<Professeur> search(String rech) {
-        if (rech != null) {
-            return professeurRepository.search(rech);
-        }
-        return professeurRepository.findAll();
-    }
 
     @Override
     public void assignProfesseurToDepartement(Long ProfID, Long departeId) {
 
-        Professeur professeur =professeurRepository.findById(ProfID).orElse(null);
+        Professeur professeur = professeurRepository.findById(ProfID).orElse(null);
         Departement departement = departementRepository.findById(departeId).orElse(null);
         professeur.setDepartementsProf(departement);
         professeurRepository.save(professeur);
     }
 
+    @Override
+    public Professeur addProfesseurandAffectDepartement(Professeur p, Long departeId) {
+        Departement pro = departementRepository.findById(departeId).orElse(null);
+        p.setDepartementsProf(pro);
+        professeurRepository.save(p);
+        return professeurRepository.save(p);
+    }
+
+    public List<Professeur> search(String keyword) {
+        if (keyword != null) {
+            return professeurRepository.search(keyword);
+        }
+        return professeurRepository.findAll();
+    }
 }

@@ -81,11 +81,31 @@ public class ProfesseurController {
         List<Professeur> professeurs= iProfesseurService.search(keyword);
         return professeurs;
     }
+
+    @PostMapping(value = "/add-professeur-departement/{departementid}")
+    @ResponseBody
     @CrossOrigin(origins = "http://localhost:4200")
-    @PutMapping(value = "/affecter-professeur-departement/{profid}/{departementid}")
-    public void affecterprofesseurToDepartement(@PathVariable("profid") Long profid,
-                                              @PathVariable("departementid") Long departementId)
+    public Professeur affecterprofesseurToDepartement(@RequestBody Professeur Par,@PathVariable("departementid") Long departementId)
     {
+
+        Professeur prof1 = iProfesseurService.addProfesseurandAffectDepartement(Par,departementId);
+        return prof1;
+    }
+
+    @PutMapping(value = "/affecter-professeur-departement/{profid}/{departementid}")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public void affecterprofesseurToDepartement(@PathVariable("profid") Long profid,
+                                                      @PathVariable("departementid") Long departementId)
+    {
+
         iProfesseurService.assignProfesseurToDepartement(profid,departementId);
+
+    }
+
+    @GetMapping("/searchProf/{p}")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public Iterable<Professeur> rechercheProfesseur ( @PathVariable("p") String keyword) {
+        Iterable<Professeur> listProfesseur = iProfesseurService.search(keyword);
+        return listProfesseur;
     }
 }
