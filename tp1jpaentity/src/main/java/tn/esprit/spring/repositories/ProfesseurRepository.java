@@ -4,6 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import tn.esprit.spring.entity.Professeur;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface ProfesseurRepository extends JpaRepository<Professeur,Long> {
@@ -19,4 +21,6 @@ public interface ProfesseurRepository extends JpaRepository<Professeur,Long> {
 
     )
     public List<Professeur> search(String keyword);
+
+    Page<Professeur> findProfesseurByPrenomProfContaining(String prenomProf, Pageable pageable);
 }

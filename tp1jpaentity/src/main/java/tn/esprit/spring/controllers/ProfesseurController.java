@@ -1,11 +1,16 @@
 package tn.esprit.spring.controllers;
 
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.spring.entity.Etudiant;
+import tn.esprit.spring.entity.Classe;
+import tn.esprit.spring.entity.Pagina;
 import tn.esprit.spring.entity.Professeur;
+import tn.esprit.spring.repositories.ProfesseurRepository;
 import tn.esprit.spring.services.IProfesseurService;
 
 import java.util.List;
@@ -18,7 +23,8 @@ import java.util.Optional;
 public class ProfesseurController {
     @Autowired
     IProfesseurService iProfesseurService;
-
+    @Autowired
+    ProfesseurRepository professeurRepository ;
     @PostMapping("/addProfesseur")
     @CrossOrigin(origins = "http://localhost:4200")
     @ResponseBody
@@ -107,5 +113,24 @@ public class ProfesseurController {
     public Iterable<Professeur> rechercheProfesseur ( @PathVariable("p") String keyword) {
         Iterable<Professeur> listProfesseur = iProfesseurService.search(keyword);
         return listProfesseur;
+    }
+
+    @GetMapping("/findAllEPaginate")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public Pagina getProfesseurs(@RequestParam Optional<String> Classe,
+                                 @RequestParam Optional<Integer> page,
+                                 @RequestParam Optional<Integer> size)
+    {
+        Page<Professeur> professeurs = null;
+        professeurs= professeurRepository.findAll(
+                PageRequest.of(
+                        page.orElse(0),
+                        size.orElse(10)
+                )
+        );
+        Pagina res = new Pagina(professeurs.getContent(), professeurs.getTotalPages(),
+                professeurs.getNumber(), professeurs.getSize());
+
+        return res;
     }
 }
