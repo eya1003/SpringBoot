@@ -20,6 +20,7 @@ public class Departement implements Serializable{
     @Column(name="idDepart")
     private Long idDepart; // Clé primaire
     private String nomDepart;
+    private Integer nbEtage;
 /*
     @JsonIgnore
     @OneToMany( )

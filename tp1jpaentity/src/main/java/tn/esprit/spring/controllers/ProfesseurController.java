@@ -117,7 +117,7 @@ public class ProfesseurController {
 
     @GetMapping("/findAllEPaginate")
     @CrossOrigin(origins = "http://localhost:4200")
-    public Pagina getProfesseurs(@RequestParam Optional<String> Classe,
+    public Pagina getProfesseurs(
                                  @RequestParam Optional<Integer> page,
                                  @RequestParam Optional<Integer> size)
     {

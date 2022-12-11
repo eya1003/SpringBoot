@@ -10,6 +10,7 @@ import tn.esprit.spring.entity.Departement;
 import tn.esprit.spring.entity.Etudiant;
 import tn.esprit.spring.entity.Pagina;
 import tn.esprit.spring.entity.Professeur;
+import tn.esprit.spring.repositories.DepartementRepository;
 import tn.esprit.spring.services.IDepartementService;
 
 
@@ -23,7 +24,8 @@ public class DepartementController {
 
     @Autowired
     IDepartementService iDepartementService;
-
+@Autowired
+    DepartementRepository departementRepository;
     @GetMapping("/getAll")
     @CrossOrigin(origins = "http://localhost:4200")
     public Iterable<Departement>  GetAllDepartement(){
@@ -66,25 +68,33 @@ public class DepartementController {
     public List<Etudiant> getEtudiantsByDepartement(@RequestParam Long idDepartement) {
         return iDepartementService.getEtudiantsByDepar(idDepartement);
     }
-/*
+
     @GetMapping("/findAllEPaginate")
     @CrossOrigin(origins = "http://localhost:4200")
-    public Pagina getProfesseurs(@RequestParam Optional<String> Classe,
+    public Pagina getProfesseurs(
                                  @RequestParam Optional<Integer> page,
                                  @RequestParam Optional<Integer> size)
     {
         Page<Departement> departements = null;
-        departements= professeurRepository.findAll(
+        departements= departementRepository.findAll(
                 PageRequest.of(
                         page.orElse(0),
                         size.orElse(10)
                 )
         );
         Pagina res = new Pagina(departements.getContent(), departements.getTotalPages(),
-                departements.getNumber(), departements.getSize());
+                departements.getNumber(), departements.getSize(),1);
 
         return res;
     }
     
- */
+
+
+    @GetMapping("/searchDepart/{p}")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public Iterable<Departement> rechercheDepartement( @PathVariable("p") String keyword) {
+        Iterable<Departement> listdep = iDepartementService.search(keyword);
+        return listdep;
+    }
+
 }

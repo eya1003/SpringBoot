@@ -12,7 +12,7 @@ public interface IDepartementService {
     public Long ajouterDepartement(Departement d);
     public Iterable<Departement> retrieveAllDepartement();
     Departement  findDepartementById(Long id);
-
+    public List<Departement> search(String keyword);
     public void deleteDepartement(long id);
     Departement updateDepartement(Departement d);
     public Departement retrieveDepartement(Long idDep);

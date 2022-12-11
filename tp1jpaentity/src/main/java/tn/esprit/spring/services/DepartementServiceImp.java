@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import tn.esprit.spring.entity.Departement;
 import tn.esprit.spring.entity.Etudiant;
+import tn.esprit.spring.entity.Professeur;
 import tn.esprit.spring.repositories.DepartementRepository;
 
 
@@ -48,5 +49,10 @@ public class DepartementServiceImp implements IDepartementService{
     public List<Etudiant> getEtudiantsByDepar (Long idDepartement){
         return  retrieveDepartement(idDepartement).getEtudiantList();
     }
-
+    public List<Departement> search(String keyword) {
+        if (keyword != null) {
+            return departementRepository.search(keyword);
+        }
+        return departementRepository.findAll();
+    }
 }
